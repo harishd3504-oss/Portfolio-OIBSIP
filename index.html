@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harish | Portfolio</title>
+  <style>
+    /* === Reset & Fonts === */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family: 'Poppins', sans-serif;
+      color:#fff;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    section{padding:80px 10%; position:relative; z-index:1;}
+
+    /* === Animated Background === */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:linear-gradient(-45deg,#1e3c72,#2a5298,#ff6b6b,#f7b733);
+      background-size:400% 400%;
+      animation:gradientBG 20s ease infinite;
+      z-index:-2;
+    }
+    @keyframes gradientBG{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    /* Floating Particles */
+    .particles{
+      position:fixed; inset:0; overflow:hidden; z-index:-1;
+    }
+    .particle{
+      position:absolute;
+      width:6px;height:6px;
+      background:rgba(255,255,255,0.7);
+      border-radius:50%;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp{
+      from{transform:translateY(110vh);}
+      to{transform:translateY(-10vh);}
+    }
+
+    /* === Navbar === */
+    nav{
+      position:fixed;top:0;left:0;width:100%;
+      padding:18px 10%;
+      display:flex;justify-content:space-between;align-items:center;
+      background:rgba(0,0,0,0.2);backdrop-filter:blur(10px);
+      z-index:1000;
+    }
+    nav h1{font-size:22px;font-weight:700;letter-spacing:1px}
+    nav ul{display:flex;list-style:none;gap:24px}
+    nav li{transition:.3s}
+    nav li:hover{transform:translateY(-2px)}
+
+    /* === Hero === */
+    .hero{
+      height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;
+    }
+    .hero h2{font-size:50px;font-weight:700;margin-bottom:20px;animation:fadeIn 2s}
+    .hero p{font-size:18px;color:#eee;max-width:600px;margin:auto;animation:fadeIn 3s}
+    .btn{
+      margin-top:30px;padding:12px 28px;border-radius:30px;
+      background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3);
+      color:#fff;font-weight:600;transition:.3s;
+    }
+    .btn:hover{background:#fff;color:#222}
+
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    /* === Section Titles === */
+    .title{font-size:36px;font-weight:600;text-align:center;margin-bottom:50px;position:relative}
+    .title::after{
+      content:"";position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
+      width:60px;height:3px;background:#fff;border-radius:3px;
+    }
+
+    /* === About === */
+    .about{display:flex;flex-wrap:wrap;align-items:center;gap:40px}
+    .about img{
+      width:220px;height:220px;border-radius:50%;object-fit:cover;
+      border:4px solid rgba(255,255,255,0.3);
+      box-shadow:0 0 20px rgba(0,0,0,0.4);
+    }
+    .about div{flex:1;min-width:250px}
+    .about p{font-size:16px;line-height:1.6;color:#eee}
+
+    /* === Skills === */
+    .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px}
+    .skill{
+      padding:20px;text-align:center;
+      background:rgba(255,255,255,0.08);
+      border-radius:14px;transition:.3s;
+    }
+    .skill:hover{transform:translateY(-6px);background:rgba(255,255,255,0.18)}
+
+    /* === Projects === */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+    .project{
+      background:rgba(255,255,255,0.08);border-radius:16px;
+      overflow:hidden;transition:.3s;cursor:pointer;
+    }
+    .project img{width:100%;height:180px;object-fit:cover}
+    .project div{padding:16px}
+    .project:hover{transform:translateY(-8px);background:rgba(255,255,255,0.18)}
+
+    /* === Contact === */
+    .contact form{
+      max-width:500px;margin:auto;display:flex;flex-direction:column;gap:16px;color: rgb(150, 74, 74);
+    }
+    .contact input,.contact textarea{
+      padding:14px;border-radius:10px;border:none;
+      background:rgba(255,255,255,0.1);color:#cf1515;
+      color: black;
+    }
+    .contact button{align-self:flex-start}
+
+    /* Footer */
+    footer{text-align:center;padding:30px;background:rgba(218, 10, 10, 0.3)}
+
+    /* === Scroll Reveal Animations === */
+    .reveal{opacity:0;transform:translateY(30px);transition:.8s ease;color: rgb(235, 9, 223);}
+    .reveal.active{opacity:1;transform:translateY(0);}
+  </style>
+</head>
+<body>
+  <!-- Background Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <h1>Harish</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Hello, I'm Harish 👋</h2>
+    <p>A passionate Computer Science(Cyber Security) student exploring Web Development, AI and innovative tech solutions. Welcome to my portfolio 🚀</p>
+    <a href="#projects" class="btn">View My Work</a>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="title">About Me</h2>
+    <div class="about reveal">
+      <img src="C:\Users\haris\OneDrive\Desktop\img harish.jpg" alt="Profile Photo">
+      <div>
+        <p>I am Harish, a student at Sri Sairam Engineering College. I love building creative and functional web applications. With strong interest in full-stack development and problem solving, I aim to craft solutions that blend design and technology.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="title">Skills</h2>
+    <div class="skills reveal">
+      <div class="skill">HTML5</div>
+      <div class="skill">CSS3</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">Python</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2 class="title">Projects</h2>
+    <div class="projects reveal">
+      <div class="project">
+        <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/videograph-free-template-353x278.jpg" alt="Project 1">
+        <div><h3>Portfolio Website</h3><p>A modern personal website showcasing my work and skills.</p></div>
+      </div>
+      <div class="project">
+        <img src="https://codingartistweb.com/wp-content/uploads/2021/03/Temp-conv-01.png" alt="Project 2">
+        <div><h3>Temperature Converter</h3><p>An interactive converter with animated background effects.</p></div>
+      </div>
+      <div class="project">
+        <img src="https://www.optimizepress.com/wp-content/uploads/2023/07/traffic-and-conversion-event-landing-page.png" alt="Project 3">
+        <div><h3>Event Landing Page</h3><p>A creative and colorful landing page for college events and community.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="title">Contact Me</h2>
+    <div class="contact reveal">
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Harish. All Rights Reserved.</p>
+  </footer>
+
+  <!-- === JavaScript === -->
+  <script>
+    // Generate floating particles
+    const particlesContainer=document.getElementById("particles");
+    for(let i=0;i<40;i++){
+      const p=document.createElement("div");
+      p.className="particle";
+      p.style.left=Math.random()*100+"%";
+      p.style.animationDuration=8+Math.random()*12+"s";
+      p.style.opacity=Math.random();
+      particlesContainer.appendChild(p);
+    }
+
+    // Scroll reveal
+    const reveals=document.querySelectorAll(".reveal");
+    window.addEventListener("scroll",()=>{
+      for(let el of reveals){
+        const rect=el.getBoundingClientRect();
+        if(rect.top<window.innerHeight-50){el.classList.add("active");}
+      }
+    });
+  </script>
+</body>
+</html>
